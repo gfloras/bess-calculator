@@ -43,12 +43,11 @@ TRANS = {
         'p_discharge_input': "Τιμή Εκφόρτισης (€/kWh)",
         'opex_input': "Ετήσια Λειτουργικά Έξοδα (€)",
         
-        # EXCEL UPLOAD FEATURES
-        'analytic_tip': "💡 Μπορείτε να επεξεργαστείτε τον πίνακα ή να ανεβάσετε δικό σας αρχείο Excel.",
-        'download_tmpl_btn': "📥 Κατεβάστε Πρότυπο Excel (Template)",
-        'upload_label': "📤 Ανεβάστε το συμπληρωμένο Excel",
-        'upload_success': "✅ Το αρχείο φορτώθηκε επιτυχώς!",
-        'upload_error': "⚠️ Το αρχείο δεν έχει τη σωστή μορφή. Παρακαλώ χρησιμοποιήστε το Πρότυπο.",
+        # Analytic Inputs (New)
+        'analytic_tip': "💡 Μπορείτε να συμπληρώσετε τον πίνακα χειροκίνητα ή να ανεβάσετε ένα αρχείο Excel.",
+        'download_template': "📥 Κατεβάστε Πρότυπο Excel (Template)",
+        'upload_label': "📂 Ανεβάστε το συμπληρωμένο Excel",
+        'upload_error': "⚠️ Το αρχείο Excel πρέπει να έχει τις σωστές στήλες. Κατεβάστε το πρότυπο για οδηγίες.",
 
         # Table Columns
         'col_year': "Έτος",
@@ -102,21 +101,60 @@ TRANS = {
             Συνιστάται αυστηρά στους χρήστες να συμβουλεύονται τους εξειδικευμένους συμβούλους τους.
         """,
 
-        'manual_title': "📘 Οδηγίες Χρήσης & Επεξηγήσεις (Πατήστε εδώ)",
+        # MANUAL (ENHANCED)
+        'manual_title': "📘 Αναλυτικός Οδηγός Χρήσης & Επεξηγήσεις (Πατήστε εδώ)",
         'manual_text': """
-        ### 1. Πώς λειτουργεί;
-        Η εφαρμογή υπολογίζει την κερδοφορία μιας επένδυσης σε μπαταρίες (BESS).
+        ### 👋 Καλώς ήρθατε στο BESS ROI Calculator
+        Αυτή η εφαρμογή σας βοηθά να αξιολογήσετε τη βιωσιμότητα μιας επένδυσης σε συστήματα αποθήκευσης ενέργειας (μπαταρίες). 
+        Υπολογίζει τα μελλοντικά έσοδα από το Arbitrage (αγορά φθηνού ρεύματος - πώληση ακριβού) και λαμβάνει υπόψη το κόστος δανεισμού.
 
-        ### 2. Βήματα
-        1.  **Αριστερή Μπάρα:** Εισάγετε τα τεχνικά χαρακτηριστικά.
-        2.  **Χρηματοδότηση:** Επιλέξτε αν θα πάρετε δάνειο.
-        3.  **Μέθοδος:** * *Απλή:* Βάζετε μέσες τιμές για όλη τη 15ετία.
-            * *Αναλυτική:* Μπορείτε να επεξεργαστείτε τον πίνακα έτος-έτος ή **να ανεβάσετε δικό σας Excel**.
+        ---
 
-        ### 3. Πώς να ανεβάσω δικό μου Excel;
-        * Στην "Αναλυτική" μέθοδο, πατήστε **"📥 Κατεβάστε Πρότυπο"**.
-        * Ανοίξτε το αρχείο, συμπληρώστε τα δεδομένα σας (χωρίς να αλλάξετε τις στήλες) και αποθηκεύστε το.
-        * Πατήστε **"📤 Ανεβάστε το Excel"** και επιλέξτε το αρχείο σας. Ο πίνακας θα ενημερωθεί αυτόματα!
+        ### ⚙️ 1. Επεξήγηση Παραμέτρων (Sidebar)
+        
+        #### Α. Βασικά Στοιχεία Έργου
+        * **Χωρητικότητα (Capacity):** Το μέγεθος της μπαταρίας σε kWh.
+        * **Κόστος Επένδυσης (CAPEX):** Το συνολικό ποσό που κοστίζει η αγορά και η εγκατάσταση (πριν το δάνειο).
+        * **Απόδοση (Efficiency):** Συνήθως 85%-90%. Δείχνει πόση ενέργεια χάνεται κατά τη φόρτιση/εκφόρτιση.
+        
+        #### Β. Χρηματοδότηση (Δάνειο)
+        * **Ποσοστό Δανειοδότησης (LTV):** Τι ποσοστό της επένδυσης θα καλύψει η τράπεζα. Το υπόλοιπο είναι τα δικά σας χρήματα (**Ίδια Κεφάλαια**).
+        * **Spread & Euribor:** Το επιτόκιο του δανείου είναι το άθροισμα αυτών των δύο. (π.χ. 2.5% Spread + 3.0% Euribor = 5.5% Τελικό Επιτόκιο).
+
+        #### Γ. Οικονομικά & Λειτουργικά Στοιχεία
+        * **Τιμή Φόρτισης/Εκφόρτισης:** Η μέση τιμή που αγοράζετε και πουλάτε το ρεύμα.
+        * **Ετήσια Φθορά (Degradation):** Οι μπαταρίες χάνουν χωρητικότητα κάθε χρόνο. Μια τυπική τιμή είναι 1.5% - 2.5%.
+        * **OPEX:** Τα ετήσια έξοδα συντήρησης, ασφάλισης και διαχείρισης.
+
+        ---
+
+        ### 📊 2. Επεξήγηση Δεικτών (Αποτελέσματα)
+        
+        * **NPV (Καθαρή Παρούσα Αξία):** Δείχνει το συνολικό κέρδος σε σημερινή αξία χρημάτων. Αν είναι θετικό (>0), η επένδυση είναι κερδοφόρα.
+        * **IRR (Εσωτερικός Βαθμός Απόδοσης):** Το πραγματικό ετήσιο επιτόκιο που κερδίζουν τα χρήματά σας. Αν το IRR είναι μεγαλύτερο από το επιτόκιο της τράπεζας, τότε συμφέρει η επένδυση.
+        * **Απόσβεση (Payback Period):** Ο χρόνος που απαιτείται για να πάρετε πίσω τα χρήματα που βάλατε από την τσέπη σας (Ίδια Κεφάλαια).
+
+        ---
+
+        ### ❓ 3. Συχνές Ερωτήσεις (FAQ) - Σημαντικό!
+
+        **Ερώτηση: Γιατί στον πίνακα αποτελεσμάτων, στο Έτος 1, το "Σωρευτικό Ταμείο" είναι μικρότερο από το "Τελικό Ταμείο";**
+        
+        **Απάντηση:**
+        Αυτό συμβαίνει γιατί το Σωρευτικό Ταμείο υπολογίζει και την αρχική σας εκταμίευση (τα χρήματα που βάλατε προκαταβολή).
+        
+        * **Παράδειγμα:**
+            * Συνολικό Κόστος Έργου: 100.000€
+            * Δάνειο (80%): 80.000€
+            * **Ίδια Κεφάλαια (Εσείς): 20.000€** (Αυτό είναι το "άνοιγμά" σας στο Έτος 0).
+            * Έστω ότι το 1ο έτος το έργο αφήνει καθαρό κέρδος **30.000€** (Τελικό Ταμείο).
+        
+        * **Ο Υπολογισμός του Σωρευτικού:**
+            * Ξεκινάμε με -20.000€ (τα χρήματα που δώσατε).
+            * Προσθέτουμε τα +30.000€ του 1ου έτους.
+            * **Αποτέλεσμα:** +10.000€. 
+        
+        Γι' αυτό βλέπετε διαφορά. Το "Τελικό Ταμείο" δείχνει τι μπήκε στο ταμείο **μέσα στη χρονιά**, ενώ το "Σωρευτικό" δείχνει αν έχετε καλύψει την αρχική σας επένδυση συνολικά.
         """
     },
     'en': {
@@ -151,12 +189,10 @@ TRANS = {
         'p_discharge_input': "Discharge Price (€/kWh)",
         'opex_input': "Annual OPEX (€)",
         
-        # EXCEL UPLOAD FEATURES
-        'analytic_tip': "💡 You can edit the table below or upload your own Excel file.",
-        'download_tmpl_btn': "📥 Download Excel Template",
-        'upload_label': "📤 Upload Filled Excel",
-        'upload_success': "✅ File loaded successfully!",
-        'upload_error': "⚠️ File format incorrect. Please use the Template.",
+        'analytic_tip': "💡 You can fill the table manually or upload an Excel file.",
+        'download_template': "📥 Download Excel Template",
+        'upload_label': "📂 Upload Excel File",
+        'upload_error': "⚠️ The Excel file must have the correct columns. Download the template for guidance.",
 
         'col_year': "Year",
         'col_deg': "Degradation (%)",
@@ -205,21 +241,59 @@ TRANS = {
             Users are strictly advised to consult with qualified financial and legal advisors before making any investment commitments.
         """,
 
-        'manual_title': "📘 User Manual & Guide (Click to expand)",
+        # MANUAL (ENHANCED)
+        'manual_title': "📘 Comprehensive User Guide (Click to expand)",
         'manual_text': """
-        ### 1. How it works
-        This app calculates the profitability of a Battery Energy Storage System (BESS).
+        ### 👋 Welcome to BESS ROI Calculator
+        This tool helps you evaluate the profitability of a Battery Energy Storage System (BESS) investment, factoring in arbitrage revenue and financing costs.
 
-        ### 2. Steps
-        1.  **Sidebar (Left):** Enter technical specs.
-        2.  **Financing:** Enable "Financing" if you use a loan.
-        3.  **Mode:** * *Simple:* Use average values.
-            * *Advanced:* Edit the table year-by-year or **Upload your own Excel**.
+        ---
 
-        ### 3. How to upload my Excel?
-        * In "Advanced" mode, click **"📥 Download Template"**.
-        * Open the file, fill in your data (keep columns as is), and save.
-        * Click **"📤 Upload Excel"** and select your file. The table will update automatically!
+        ### ⚙️ 1. Parameters Guide (Sidebar)
+        
+        #### A. Technical Specs
+        * **Capacity:** The size of the battery in kWh.
+        * **CAPEX (Cost):** Total investment cost before any loans.
+        * **Efficiency:** Usually 85%-90%. Energy lost during charging/discharging cycles.
+        
+        #### B. Financing
+        * **LTV (Loan to Value):** Percentage of investment covered by the bank. The rest is your **Equity**.
+        * **Interest Rate:** Calculated as Euribor + Bank Margin (Spread).
+
+        #### C. Financial & Operational
+        * **Charge/Discharge Price:** Average prices for buying/selling electricity.
+        * **Degradation:** Annual loss of battery capacity (typically 1.5% - 2.5%).
+        * **OPEX:** Annual operational expenses (maintenance, insurance).
+
+        ---
+
+        ### 📊 2. Metrics Explained
+        
+        * **NPV (Net Present Value):** Total profit in today's money value. Positive (>0) means the project is profitable.
+        * **IRR (Internal Rate of Return):** The annual return rate on your specific Equity. Compare this with alternative investments.
+        * **Payback Period:** Years required to recover your initial Equity.
+
+        ---
+
+        ### ❓ 3. FAQ - Important!
+
+        **Question: Why is "Cumulative Cash Flow" lower than "Net Cash Flow" in Year 1?**
+        
+        **Answer:**
+        Cumulative Cash Flow accounts for your **Initial Equity** (the down payment you made).
+        
+        * **Example:**
+            * Total Cost: €100k
+            * Loan: €80k
+            * **Your Equity: €20k** (This is your starting negative balance).
+            * Year 1 Net Profit: **€30k**.
+        
+        * **Calculation:**
+            * Start: -€20k
+            * Add Year 1: +€30k
+            * **Result (Cumulative):** +€10k. 
+        
+        This is why there is a difference. "Net" is what you made that year; "Cumulative" is your total position including the initial cost.
         """
     }
 }
@@ -366,95 +440,49 @@ with st.sidebar:
         c_opex = T['col_opex']
         c_eur = T['col_euribor']
 
-        # --- UPLOAD/DOWNLOAD LOGIC ---
-        # 1. Create Default Data
+        # Columns mapping for Dataframe
         default_data = {
             c_year: range(1, 16),
             c_deg: [1.9] * 15,
             c_pch: [0.4468] * 15,
             c_pdis: [1.1501] * 15,
             c_opex: [5000.0] * 15,
-            c_eur: [3.0] * 15
+            c_eur: [3.0] * 15 
         }
+        df_input = pd.DataFrame(default_data)
         
-        # 2. Template Button
-        df_template = pd.DataFrame(default_data)
-        buffer_tmpl = io.BytesIO()
-        with pd.ExcelWriter(buffer_tmpl, engine='xlsxwriter') as writer:
-            df_template.to_excel(writer, index=False)
+        # --- EXCEL UPLOAD LOGIC ---
+        
+        # 1. Download Template Button
+        buffer_temp = io.BytesIO()
+        with pd.ExcelWriter(buffer_temp, engine='xlsxwriter') as writer:
+            df_input.to_excel(writer, index=False)
         
         st.download_button(
-            label=T['download_tmpl_btn'],
-            data=buffer_tmpl.getvalue(),
+            label=T['download_template'],
+            data=buffer_temp.getvalue(),
             file_name="BESS_Input_Template.xlsx",
             mime="application/vnd.ms-excel",
             key="dl_template"
         )
         
-        # 3. Upload Button
-        uploaded_file = st.file_uploader(T['upload_label'], type=['xlsx'])
+        # 2. Upload Button
+        uploaded_file = st.file_uploader(T['upload_label'], type=["xlsx", "xls"])
         
-        if uploaded_file:
+        if uploaded_file is not None:
             try:
-                uploaded_df = pd.read_excel(uploaded_file)
-                # Basic validation: Check if columns match roughly (by length)
-                # We assume user uses the template
-                if len(uploaded_df.columns) >= 5:
-                    st.success(T['upload_success'])
-                    # Map uploaded columns to our expected list lists
-                    # We assume column order: Year, Deg, Charge, Discharge, Opex, Euribor
-                    # Safety check on length
-                    rows = min(len(uploaded_df), 15)
-                    
-                    # Extract data using iloc to be safe against column name changes
-                    list_degradation = uploaded_df.iloc[:rows, 1].tolist()
-                    list_price_charge = uploaded_df.iloc[:rows, 2].tolist()
-                    list_price_discharge = uploaded_df.iloc[:rows, 3].tolist()
-                    list_opex = uploaded_df.iloc[:rows, 4].tolist()
-                    if len(uploaded_df.columns) > 5:
-                        list_euribor = uploaded_df.iloc[:rows, 5].tolist()
-                    else:
-                        list_euribor = [3.0]*15
-                    
-                    # Pad if less than 15 rows
-                    if rows < 15:
-                        missing = 15 - rows
-                        list_degradation += [1.9] * missing
-                        list_price_charge += [0.4468] * missing
-                        list_price_discharge += [1.1501] * missing
-                        list_opex += [5000.0] * missing
-                        list_euribor += [3.0] * missing
-                        
-                    # Prepare DF for editor (visual confirmation)
-                    df_display = pd.DataFrame({
-                        c_year: range(1, 16),
-                        c_deg: list_degradation,
-                        c_pch: list_price_charge,
-                        c_pdis: list_price_discharge,
-                        c_opex: list_opex,
-                        c_eur: list_euribor
-                    })
+                # Read uploaded excel
+                df_uploaded = pd.read_excel(uploaded_file)
+                # Check if columns match roughly (at least checks for length or key columns)
+                if len(df_uploaded.columns) >= 5:
+                    df_input = df_uploaded
+                    # Normalize columns if needed (optional optimization)
                 else:
                     st.error(T['upload_error'])
-                    df_display = pd.DataFrame(default_data)
-                    list_degradation = df_display[c_deg].tolist()
-                    list_price_charge = df_display[c_pch].tolist()
-                    list_price_discharge = df_display[c_pdis].tolist()
-                    list_opex = df_display[c_opex].tolist()
-                    list_euribor = df_display[c_eur].tolist()
-
             except Exception as e:
-                st.error(f"Error: {e}")
-                df_display = pd.DataFrame(default_data)
-        else:
-            df_display = pd.DataFrame(default_data)
-            list_degradation = df_display[c_deg].tolist()
-            list_price_charge = df_display[c_pch].tolist()
-            list_price_discharge = df_display[c_pdis].tolist()
-            list_opex = df_display[c_opex].tolist()
-            list_euribor = df_display[c_eur].tolist()
-        
-        # Hide Euribor column if loan is not used (Visualization only)
+                st.error(f"Error reading file: {e}")
+
+        # Hide Euribor column in editor if loan is not used (visual only)
         col_config = {
             c_year: st.column_config.NumberColumn(disabled=True),
             c_deg: st.column_config.NumberColumn(format="%.2f%%"),
@@ -464,22 +492,29 @@ with st.sidebar:
             c_eur: st.column_config.NumberColumn(format="%.2f%%")
         }
         
-        # Show the editor (so they can see what was uploaded or edit further)
         edited_df = st.data_editor(
-            df_display, 
+            df_input, 
             hide_index=True, 
             column_config=col_config
         )
         
-        # Final extraction from editor (in case they edit after upload)
-        list_degradation = edited_df[c_deg].tolist()
-        list_price_charge = edited_df[c_pch].tolist()
-        list_price_discharge = edited_df[c_pdis].tolist()
-        list_opex = edited_df[c_opex].tolist()
-        list_euribor = edited_df[c_eur].tolist()
+        # Fail-safe: if columns are missing (uploaded wrong file), revert to defaults or handle error
+        try:
+            list_degradation = edited_df[c_deg].tolist()
+            list_price_charge = edited_df[c_pch].tolist()
+            list_price_discharge = edited_df[c_pdis].tolist()
+            list_opex = edited_df[c_opex].tolist()
+            list_euribor = edited_df[c_eur].tolist()
+        except KeyError:
+            st.error(T['upload_error'])
+            # Fallback to defaults to prevent crash
+            list_degradation = [1.9] * 15
+            list_price_charge = [0.4468] * 15
+            list_price_discharge = [1.1501] * 15
+            list_opex = [5000.0] * 15
+            list_euribor = [3.0] * 15
 
 # --- ENGINE ---
-# 1. SoH Curve
 current_soh = 1.0
 soh_curve = [] 
 temp_soh = 1.0
@@ -491,57 +526,44 @@ for i in range(14):
     soh_curve.append(temp_soh)
 
 years = list(range(1, 16))
-# CASH FLOW 0 = EQUITY (Negative)
 cash_flows = [-equity_amount] 
 annual_data = [] 
 running_balance = -equity_amount
 cumulative_cash_flow = [-equity_amount]
-
-# LOAN TRACKING
 current_loan_balance = loan_amount
 
 for i in range(15):
     year = years[i]
     deg_factor = soh_curve[i]
     
-    # Financial Inputs for Year i
     p_charge = list_price_charge[i]
     p_discharge = list_price_discharge[i]
     opex = list_opex[i]
     euribor = list_euribor[i]
     
-    # Energy Calculation
     daily_discharge_kwh = capacity_kwh * cycles_per_day * deg_factor
     daily_charge_kwh = daily_discharge_kwh / efficiency 
     
     annual_discharge = daily_discharge_kwh * days_operation
     annual_charge = daily_charge_kwh * days_operation
     
-    # Operating Cash Flow
     revenue = annual_discharge * p_discharge
     charging_cost = annual_charge * p_charge
     gross_profit = revenue - charging_cost
     ebitda = gross_profit - opex
     
-    # Loan Calculation (Annuity Method with Variable Rate logic)
     interest_payment = 0.0
     principal_payment = 0.0
     
-    if use_loan and current_loan_balance > 0.1: # Threshold for float precision
-        # Rate for this year
+    if use_loan and current_loan_balance > 0.1:
         total_rate = (euribor + loan_margin) / 100.0
-        
-        # Years remaining including this one
         years_remaining = loan_duration - i
         
         if years_remaining > 0:
-            # Calculate PMT (Total Payment) for this year based on current balance
             pmt = npf.pmt(total_rate, years_remaining, -current_loan_balance)
-            
             interest_payment = current_loan_balance * total_rate
             principal_payment = pmt - interest_payment
             
-            # Handle last year precision or if principal > balance
             if principal_payment > current_loan_balance:
                 principal_payment = current_loan_balance
                 pmt = interest_payment + principal_payment
@@ -551,7 +573,6 @@ for i in range(15):
             interest_payment = 0
             principal_payment = 0
             
-    # Free Cash Flow to Equity (FCFE)
     net_cash_flow = ebitda - interest_payment - principal_payment
     
     cash_flows.append(net_cash_flow)
@@ -571,7 +592,6 @@ for i in range(15):
         running_balance
     ])
 
-# IRR Calculation
 try:
     irr = npf.irr(cash_flows)
     if pd.isna(irr): irr = 0.0
