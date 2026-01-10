@@ -32,7 +32,7 @@ TRANS = {
         'loan_enable': "Ενεργοποίηση Δανεισμού",
         'loan_percent': "Ποσοστό Δανειοδότησης (%)",
         'loan_amount_display': "Ποσό Δανείου: ",
-        'loan_equity_display': "Ίδια Κεφάλαια: ",
+        'loan_equity_display': "Ίδια Κεφάλαια (Εμείς): ",
         'loan_duration': "Διάρκεια Δανείου (Έτη)",
         'loan_margin': "Περιθώριο Τράπεζας (Spread %)",
         'loan_euribor': "Επιτόκιο Euribor (%)",
@@ -86,7 +86,6 @@ TRANS = {
         'param_col': "Παράμετρος",
         'val_col': "Τιμή",
         
-        # Feedback & Disclaimer
         'feedback_text': "📧 Αν έχετε κάποια παρατήρηση για την εφαρμογή ή αν θέλετε κάποια βελτίωση, παρακαλούμε στείλτε μας μήνυμα στο: **bess@bessenergy.gr**",
         'disclaimer_title': "⚠️ Αποποίηση Ευθύνης (Disclaimer):",
         'disclaimer_text': """
@@ -95,6 +94,33 @@ TRANS = {
             <br><br>
             Η BESS ENERGY δεν εγγυάται την ακρίβεια των αποτελεσμάτων και δεν φέρει ουδεμία ευθύνη για τυχόν λάθη ή επενδυτικές αποφάσεις. 
             Συνιστάται αυστηρά στους χρήστες να συμβουλεύονται τους εξειδικευμένους συμβούλους τους.
+        """,
+
+        # MANUAL
+        'manual_title': "📘 Οδηγίες Χρήσης & Επεξηγήσεις (Πατήστε εδώ)",
+        'manual_text': """
+        ### 1. Πώς λειτουργεί;
+        Η εφαρμογή υπολογίζει την κερδοφορία μιας επένδυσης σε μπαταρίες (BESS), λαμβάνοντας υπόψη τα έσοδα από τη διαφορά τιμής ρεύματος (arbitrage) και το κόστος δανεισμού.
+
+        ### 2. Βήματα Υπολογισμού
+        1.  **Αριστερή Μπάρα:** Εισάγετε τα τεχνικά χαρακτηριστικά (Χωρητικότητα, Κόστος).
+        2.  **Χρηματοδότηση:** Επιλέξτε "Ενεργοποίηση Δανεισμού" αν θα πάρετε δάνειο. Ρυθμίστε το ποσοστό και το επιτόκιο (Euribor + Spread).
+        3.  **Οικονομικά Στοιχεία:**
+            * *Τιμή Φόρτισης:* Πόσο αγοράζετε το ρεύμα (χαμηλή τιμή).
+            * *Τιμή Εκφόρτισης:* Πόσο το πουλάτε (υψηλή τιμή).
+            * *Φθορά:* Πόσο πέφτει η απόδοση της μπαταρίας κάθε χρόνο.
+        4.  **Μέθοδος:** Επιλέξτε "Αναλυτική" αν θέλετε να βάλετε διαφορετικές τιμές για κάθε έτος (π.χ. αν προβλέπετε αύξηση του Euribor).
+
+        ### 3. Τι σημαίνουν οι δείκτες;
+        * **NPV (Καθαρή Παρούσα Αξία):** Το συνολικό καθαρό κέρδος σε σημερινά χρήματα. Αν είναι θετικό, η επένδυση θεωρείται καλή.
+        * **IRR (Εσωτερικός Βαθμός Απόδοσης):** Το ετήσιο επιτόκιο που σας αποδίδουν τα χρήματά σας (τα Ίδια Κεφάλαια). Συγκρίνετέ το με το επιτόκιο μιας προθεσμιακής κατάθεσης.
+        * **Απόσβεση (Payback):** Σε πόσα χρόνια θα έχετε πάρει πίσω τα χρήματα που βάλατε από την τσέπη σας.
+        * **ROI (Απόδοση Επένδυσης):** Το συνολικό ποσοστό κέρδους στη 15ετία επί των χρημάτων σας.
+
+        ### 4. Συχνές Ερωτήσεις (FAQ)
+        **Ε:** *Γιατί στο Έτος 1 το "Σωρευτικό Ταμείο" είναι μικρότερο από το "Τελικό Ταμείο";*
+        **Α:** Το Σωρευτικό Ταμείο αφαιρεί τα **Ίδια Κεφάλαια** που πληρώσατε στην αρχή (Έτος 0) για να μπείτε στην επένδυση. 
+        Παράδειγμα: Αν βάλατε 10.000€ και το 1ο έτος βγάλατε 40.000€, το ταμείο της χρονιάς είναι 40.000€, αλλά το σωρευτικό είναι 30.000€ (40.000 - 10.000).
         """
     },
     'en': {
@@ -119,7 +145,7 @@ TRANS = {
         'loan_enable': "Enable Financing",
         'loan_percent': "Loan to Value (LTV %)",
         'loan_amount_display': "Loan Amount: ",
-        'loan_equity_display': "Equity: ",
+        'loan_equity_display': "Equity Amount: ",
         'loan_duration': "Loan Duration (Years)",
         'loan_margin': "Bank Margin (Spread %)",
         'loan_euribor': "Euribor Rate (%)",
@@ -175,6 +201,33 @@ TRANS = {
             <br><br>
             BESS ENERGY does not guarantee the accuracy of the results and assumes no liability for any errors or investment decisions made based on this tool. 
             Users are strictly advised to consult with qualified financial and legal advisors before making any investment commitments.
+        """,
+
+        # MANUAL
+        'manual_title': "📘 User Manual & Guide (Click to expand)",
+        'manual_text': """
+        ### 1. How it works
+        This app calculates the profitability of a Battery Energy Storage System (BESS) investment, considering arbitrage revenue (buy low, sell high) and financing costs.
+
+        ### 2. Steps
+        1.  **Sidebar (Left):** Enter technical specs (Capacity, Cost).
+        2.  **Financing:** Enable "Financing" if you use a loan. Set the percentage and interest rate (Euribor + Spread).
+        3.  **Financials:**
+            * *Charge Price:* Cost to buy electricity (low).
+            * *Discharge Price:* Revenue from selling (high).
+            * *Degradation:* Annual battery performance loss.
+        4.  **Mode:** Choose "Advanced" to input variable values for each year (e.g., varying Euribor).
+
+        ### 3. Key Metrics
+        * **NPV (Net Present Value):** Total profit in today's money. Positive is good.
+        * **IRR (Internal Rate of Return):** The annual interest rate your Equity earns. Compare this to a bank deposit rate.
+        * **Payback:** How many years it takes to get your initial Equity back.
+        * **ROI:** Total Return on Investment over 15 years.
+
+        ### 4. FAQ
+        **Q:** *Why is "Cumulative Cash Flow" lower than "Net Cash Flow" in Year 1?*
+        **A:** The Cumulative flow subtracts your **Initial Equity** paid in Year 0.
+        Example: If you invested €10k and made €40k in Year 1, your Year 1 Net is €40k, but your Cumulative is €30k (€40k - €10k).
         """
     }
 }
@@ -238,6 +291,10 @@ with st.sidebar:
 
 # Main Title
 st.title(T['title'])
+
+# --- MANUAL EXPANDER (NEW) ---
+with st.expander(T['manual_title']):
+    st.markdown(T['manual_text'])
 
 # --- SIDEBAR: INPUTS ---
 with st.sidebar:
@@ -571,14 +628,12 @@ with col_btn2:
 # --- FEEDBACK & DISCLAIMER ---
 st.divider()
 
-# Feedback Section
 st.markdown(f"""
 <div class="feedback-box" style='text-align: center; color: #555; font-weight: 500; margin-bottom: 20px;'>
     {T['feedback_text']}
 </div>
 """, unsafe_allow_html=True)
 
-# Legal Disclaimer
 st.markdown(f"""
 <div class="disclaimer-box" style='background-color: #f0f2f6; padding: 15px; border-radius: 8px; font-size: 13px; color: #444;'>
     <strong>{T['disclaimer_title']}</strong>
