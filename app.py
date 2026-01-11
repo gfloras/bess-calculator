@@ -94,7 +94,7 @@ TRANS = {
         'print_instruction': "🖨️ **Αποθήκευση & Εκτύπωση:** Αν θέλετε να τυπώσετε τα αποτελέσματα, χρησιμοποιήστε τις επιλογές στο κάτω μέρος της σελίδας.",
 
         # PROMO SECTION
-        'promo_title': "⚡ Οι Λύσεις Αποθήκευσης της BESS ENERGY",
+        'promo_title': "⚡ Οι Λύσεις Αποθήκευσης GOTION της BESS ENERGY",
         'promo_desc': "Επιλέξτε την ιδανική λύση μπαταρίας **Gotion** για την επένδυσή σας.",
         'prod1_title': "Gotion Utility Scale (5.015 MWh)",
         'prod1_btn': "Δείτε το Προϊόν",
@@ -104,16 +104,15 @@ TRANS = {
         # Disclaimer
         'disclaimer_title': "⚠️ Αποποίηση Ευθύνης (Disclaimer)",
         'disclaimer_text': """
-            Η παρούσα εφαρμογή αναπτύχθηκε από την BESS ENERGY αποκλειστικά για ενημερωτικούς και εκπαιδευτικούς σκοπούς. 
+            Η παρούσα εφαρμογή αναπτύχθηκε από την BESS ENERGY, εξουσιοδοτημένο διανομέα των Μπαταριών GOTION, αποκλειστικά για ενημερωτικούς και εκπαιδευτικούς σκοπούς. 
             Οι υπολογισμοί και τα αποτελέσματα που παρουσιάζονται αποτελούν εκτιμήσεις που βασίζονται στα δεδομένα που εισάγει ο χρήστης.
-            <br>
             Η BESS ENERGY δεν εγγυάται την ακρίβεια των αποτελεσμάτων και δεν φέρει ουδεμία ευθύνη για τυχόν λάθη ή επενδυτικές αποφάσεις. 
             Συνιστάται αυστηρά στους χρήστες να συμβουλεύονται τους εξειδικευμένους συμβούλους τους.
         """,
 
         # Leads Form
         'leads_title': "📬 Μείνετε Ενημερωμένοι (Προαιρετικό)",
-        'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις σχετικά με τις μπαταρίες **Gotion** και νέες επενδυτικές ευκαιρίες.",
+        'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις σχετικά με τις μπαταρίες Gotion.",
         'lbl_name': "Ονοματεπώνυμο",
         'lbl_email': "Email",
         'lbl_consent': "Επιθυμώ να λαμβάνω ενημερωτικά email από την BESS ENERGY.",
@@ -129,14 +128,15 @@ TRANS = {
         'param_col': "Παράμετρος",
         'val_col': "Τιμή",
         
-        'feedback_text': "📧 Αν έχετε κάποια παρατήρηση για την εφαρμογή ή αν θέλετε κάποια βελτίωση, παρακαλούμε στείλτε μας μήνυμα στο: **bess@bessenergy.gr**",
+        'feedback_text': "📧 Αν έχετε κάποια παρατήρηση για την εφαρμογή ή αν θέλετε κάποια βελτίωση, παρακαλούμε στείλτε μας μήνυμα στο: bess@bessenergy.gr",
         
         # MANUAL
         'manual_title': "📘 Αναλυτικός Οδηγός Χρήσης & Επεξηγήσεις (Πατήστε εδώ)",
         'manual_text': """
         ### 👋 Καλώς ήρθατε στο BESS ROI Calculator
-        Αυτή η εφαρμογή σας βοηθά να αξιολογήσετε τη βιωσιμότητα μιας επένδυσης σε συστήματα αποθήκευσης ενέργειας (μπαταρίες). 
-        Υπολογίζει τα μελλοντικά έσοδα από το Arbitrage (αγορά φθηνού ρεύματος - πώληση ακριβού) και λαμβάνει υπόψη το κόστος δανεισμού.
+        Αυτή η εφαρμογή σας βοηθά να αξιολογήσετε τη βιωσιμότητα μιας επένδυσης σε συστήματα αποθήκευσης ενέργειας (μπαταρίες) BESS. 
+        Η παρούσα εφαρμογή αναπτύχθηκε από την BESS ENERGY, εξουσιοδοτημένο διανομέα των Μπαταριών GOTION, αποκλειστικά για ενημερωτικούς και εκπαιδευτικούς σκοπούς. 
+        Υπολογίζει τα μελλοντικά έσοδα και λαμβάνει υπόψη το κόστος δανεισμού.
 
         ---
 
@@ -148,7 +148,7 @@ TRANS = {
         * **Απόδοση (Efficiency):** Συνήθως 85%-90%. Δείχνει πόση ενέργεια χάνεται κατά τη φόρτιση/εκφόρτιση.
         
         #### Β. Χρηματοδότηση (Δάνειο)
-        * **Ποσοστό Δανειοδότησης (LTV):** Τι ποσοστό της επένδυσης θα καλύψει η τράπεζα. Το υπόλοιπο είναι τα δικά σας χρήματα (**Ίδια Κεφάλαια**).
+        * **Ποσοστό Δανειοδότησης:** Τι ποσοστό της επένδυσης θα καλύψει η τράπεζα. Το υπόλοιπο είναι τα δικά σας χρήματα (**Ίδια Κεφάλαια**).
         * **Spread & Euribor:** Το επιτόκιο του δανείου είναι το άθροισμα αυτών των δύο. (π.χ. 2.5% Spread + 3.0% Euribor = 5.5% Τελικό Επιτόκιο).
 
         #### Γ. Οικονομικά & Λειτουργικά Στοιχεία
@@ -243,9 +243,8 @@ TRANS = {
 
         'disclaimer_title': "⚠️ Disclaimer",
         'disclaimer_text': """
-            This application was developed by BESS ENERGY solely for informational and educational purposes. 
+            This application was developed by BESS ENERGY, an authorized distributor of GOTION Batteries, exclusively for informational and educational purposes. 
             The calculations and results presented are estimates based on user inputs and theoretical models.
-            <br>
             BESS ENERGY does not guarantee the accuracy of the results and assumes no liability for any errors or investment decisions made based on this tool. 
             Users are strictly advised to consult with qualified financial and legal advisors before making any investment commitments.
         """,
@@ -271,7 +270,8 @@ TRANS = {
         'manual_title': "📘 Comprehensive User Guide (Click to expand)",
         'manual_text': """
         ### 👋 Welcome to BESS ROI Calculator
-        This tool helps you evaluate the profitability of a Battery Energy Storage System (BESS) investment, factoring in arbitrage revenue and financing costs.
+        This application was developed by BESS ENERGY, an authorized distributor of GOTION Batteries, exclusively for informational and educational purposes.
+        This tool helps you evaluate the profitability of a Battery Energy Storage System (BESS) investment, factoring in revenue and financing costs.
 
         ---
 
@@ -845,3 +845,4 @@ with st.expander("Admin Login (Restricted)"):
             st.success(f"Found leads file! Size: {os.path.getsize(LEADS_FILE)} bytes")
         else:
             st.warning("No leads collected yet.")
+
