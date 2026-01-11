@@ -265,7 +265,7 @@ TRANS = {
         'param_col': "Parameter",
         'val_col': "Value",
         
-        'feedback_text': "📧 If you have any feedback regarding the application or suggestions for improvement, please send us a message at: **bess@bessenergy.gr**",
+        'feedback_text': "📧 If you have any feedback regarding the application or suggestions for improvement, please send us a message at: bess@bessenergy.gr",
         
         'manual_title': "📘 Comprehensive User Guide (Click to expand)",
         'manual_text': """
@@ -845,5 +845,6 @@ with st.expander("Admin Login (Restricted)"):
             st.success(f"Found leads file! Size: {os.path.getsize(LEADS_FILE)} bytes")
         else:
             st.warning("No leads collected yet.")
+
 
 
