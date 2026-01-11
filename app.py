@@ -4,6 +4,8 @@ import numpy_financial as npf
 import plotly.graph_objects as go
 import io
 import os
+import csv
+from datetime import datetime
 
 # --- ΛΕΞΙΚΟ ΜΕΤΑΦΡΑΣΕΩΝ (TRANSLATION DICTIONARY) ---
 TRANS = {
@@ -42,8 +44,6 @@ TRANS = {
         'p_charge_input': "Τιμή Φόρτισης (€/kWh)",
         'p_discharge_input': "Τιμή Εκφόρτισης (€/kWh)",
         'opex_input': "Ετήσια Λειτουργικά Έξοδα (€)",
-        
-        # Analytic Inputs (New)
         'analytic_tip': "💡 Μπορείτε να συμπληρώσετε τον πίνακα χειροκίνητα ή να ανεβάσετε ένα αρχείο Excel.",
         'download_template': "📥 Κατεβάστε Πρότυπο Excel (Template)",
         'upload_label': "📂 Ανεβάστε το συμπληρωμένο Excel",
@@ -83,6 +83,13 @@ TRANS = {
         'tbl_net': "Τελικό Ταμείο",
         'tbl_cum': "Σωρευτικό",
 
+        # Leads Form
+        'leads_title': "📬 Μείνετε Ενημερωμένοι (Προαιρετικό)",
+        'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις σχετικά με τις μπαταρίες **Gotion** και νέες επενδυτικές ευκαιρίες.",
+        'lbl_name': "Ονοματεπώνυμο",
+        'lbl_email': "Email",
+        'lbl_consent': "Επιθυμώ να λαμβάνω ενημερωτικά email από την BESS ENERGY.",
+
         # Export & Footer
         'btn_download': "📥 Λήψη σε Excel",
         'print_tip': "💡 Για εκτύπωση / αποθήκευση PDF πατήστε **Ctrl + P**.",
@@ -101,7 +108,7 @@ TRANS = {
             Συνιστάται αυστηρά στους χρήστες να συμβουλεύονται τους εξειδικευμένους συμβούλους τους.
         """,
 
-        # MANUAL (ENHANCED)
+        # MANUAL
         'manual_title': "📘 Αναλυτικός Οδηγός Χρήσης & Επεξηγήσεις (Πατήστε εδώ)",
         'manual_text': """
         ### 👋 Καλώς ήρθατε στο BESS ROI Calculator
@@ -136,7 +143,7 @@ TRANS = {
 
         ---
 
-        ### ❓ 3. Συχνές Ερωτήσεις (FAQ) - Σημαντικό!
+        ### ❓ 3. Συχνές Ερωτήσεις (FAQ)
 
         **Ερώτηση: Γιατί στον πίνακα αποτελεσμάτων, στο Έτος 1, το "Σωρευτικό Ταμείο" είναι μικρότερο από το "Τελικό Ταμείο";**
         
@@ -224,6 +231,12 @@ TRANS = {
         'tbl_net': "Net Cash Flow",
         'tbl_cum': "Cumulative",
 
+        'leads_title': "📬 Stay Informed (Optional)",
+        'leads_desc': "Fill in your details to receive updates about **Gotion** batteries and investment opportunities.",
+        'lbl_name': "Full Name",
+        'lbl_email': "Email",
+        'lbl_consent': "I agree to receive newsletters from BESS ENERGY.",
+
         'btn_download': "📥 Download to Excel",
         'print_tip': "💡 To print or save as PDF press **Ctrl + P**.",
         'sheet_res': "Results",
@@ -241,7 +254,6 @@ TRANS = {
             Users are strictly advised to consult with qualified financial and legal advisors before making any investment commitments.
         """,
 
-        # MANUAL (ENHANCED)
         'manual_title': "📘 Comprehensive User Guide (Click to expand)",
         'manual_text': """
         ### 👋 Welcome to BESS ROI Calculator
@@ -275,7 +287,7 @@ TRANS = {
 
         ---
 
-        ### ❓ 3. FAQ - Important!
+        ### ❓ 3. FAQ
 
         **Question: Why is "Cumulative Cash Flow" lower than "Net Cash Flow" in Year 1?**
         
@@ -334,6 +346,24 @@ def fmt_num(x, lang):
         return f"{x:,.0f}".replace(",", ".")
     else:
         return f"{x:,.0f}"
+
+# --- LEADS STORAGE FUNCTION ---
+LEADS_FILE = 'leads.csv'
+
+def save_lead(name, email, consent):
+    if name and email and consent:
+        file_exists = os.path.isfile(LEADS_FILE)
+        try:
+            with open(LEADS_FILE, 'a', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                if not file_exists:
+                    writer.writerow(['Date', 'Name', 'Email', 'Consent'])
+                
+                # Timestamp
+                now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                writer.writerow([now, name, email, "Yes" if consent else "No"])
+        except Exception as e:
+            pass # Silent fail to not disrupt user
 
 # -------------------------------------------------------
 
@@ -440,7 +470,6 @@ with st.sidebar:
         c_opex = T['col_opex']
         c_eur = T['col_euribor']
 
-        # Columns mapping for Dataframe
         default_data = {
             c_year: range(1, 16),
             c_deg: [1.9] * 15,
@@ -451,9 +480,7 @@ with st.sidebar:
         }
         df_input = pd.DataFrame(default_data)
         
-        # --- EXCEL UPLOAD LOGIC ---
-        
-        # 1. Download Template Button
+        # EXCEL UPLOAD LOGIC
         buffer_temp = io.BytesIO()
         with pd.ExcelWriter(buffer_temp, engine='xlsxwriter') as writer:
             df_input.to_excel(writer, index=False)
@@ -466,23 +493,18 @@ with st.sidebar:
             key="dl_template"
         )
         
-        # 2. Upload Button
         uploaded_file = st.file_uploader(T['upload_label'], type=["xlsx", "xls"])
         
         if uploaded_file is not None:
             try:
-                # Read uploaded excel
                 df_uploaded = pd.read_excel(uploaded_file)
-                # Check if columns match roughly (at least checks for length or key columns)
                 if len(df_uploaded.columns) >= 5:
                     df_input = df_uploaded
-                    # Normalize columns if needed (optional optimization)
                 else:
                     st.error(T['upload_error'])
             except Exception as e:
                 st.error(f"Error reading file: {e}")
 
-        # Hide Euribor column in editor if loan is not used (visual only)
         col_config = {
             c_year: st.column_config.NumberColumn(disabled=True),
             c_deg: st.column_config.NumberColumn(format="%.2f%%"),
@@ -498,7 +520,6 @@ with st.sidebar:
             column_config=col_config
         )
         
-        # Fail-safe: if columns are missing (uploaded wrong file), revert to defaults or handle error
         try:
             list_degradation = edited_df[c_deg].tolist()
             list_price_charge = edited_df[c_pch].tolist()
@@ -507,7 +528,6 @@ with st.sidebar:
             list_euribor = edited_df[c_eur].tolist()
         except KeyError:
             st.error(T['upload_error'])
-            # Fallback to defaults to prevent crash
             list_degradation = [1.9] * 15
             list_price_charge = [0.4468] * 15
             list_price_discharge = [1.1501] * 15
@@ -661,7 +681,20 @@ styler = df_results.style.format({
 
 st.dataframe(styler, use_container_width=True)
 
-# --- EXPORT ---
+# --- LEAD GENERATION & EXPORT ---
+st.divider()
+
+# 1. Lead Generation Form
+col_lead1, col_lead2 = st.columns(2)
+with col_lead1:
+    st.subheader(T['leads_title'])
+    st.markdown(T['leads_desc'])
+    
+    lead_name = st.text_input(T['lbl_name'], key="lead_name")
+    lead_email = st.text_input(T['lbl_email'], key="lead_email")
+    lead_consent = st.checkbox(T['lbl_consent'], key="lead_consent")
+
+# 2. Export Button with Callback
 buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     df_export = df_results.copy()
@@ -702,13 +735,17 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 
 download_data = buffer.getvalue()
 
+# Layout for Download
 col_btn1, col_btn2 = st.columns([1, 4])
 with col_btn1:
+    # IMPORTANT: Pass inputs to args, function will save only if populated
     st.download_button(
         label=T['btn_download'],
         data=download_data,
         file_name="BESS_ROI_Report.xlsx",
-        mime="application/vnd.ms-excel"
+        mime="application/vnd.ms-excel",
+        on_click=save_lead,
+        args=(lead_name, lead_email, lead_consent)
     )
 
 with col_btn2:
@@ -729,3 +766,21 @@ st.markdown(f"""
     {T['disclaimer_text']}
 </div>
 """, unsafe_allow_html=True)
+
+
+# --- SECRET ADMIN PANEL (Για να κατεβάζεις τα emails) ---
+# Θα φαίνεται μόνο αν πατήσεις στο "Expander" κάτω-κάτω
+with st.expander("Admin Login (Restricted)"):
+    admin_pass = st.text_input("Password", type="password")
+    if admin_pass == "bessadmin2024": # ΑΛΛΑΞΕ ΤΟΝ ΚΩΔΙΚΟ ΑΝ ΘΕΣ
+        if os.path.exists(LEADS_FILE):
+            with open(LEADS_FILE, "rb") as f:
+                st.download_button(
+                    label="📥 Download Leads (CSV)",
+                    data=f,
+                    file_name="leads_backup.csv",
+                    mime="text/csv"
+                )
+            st.success(f"Found leads file! Size: {os.path.getsize(LEADS_FILE)} bytes")
+        else:
+            st.warning("No leads collected yet.")
