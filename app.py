@@ -83,6 +83,20 @@ TRANS = {
         'tbl_net': "Τελικό Ταμείο",
         'tbl_cum': "Σωρευτικό",
 
+        # SAVE & PRINT SECTION
+        'save_title': "🖨️ Αποθήκευση & Εκτύπωση",
+        'save_desc': "Αν θέλετε να κρατήσετε τα αποτελέσματα, χρησιμοποιήστε τις παρακάτω επιλογές.",
+        
+        # Disclaimer
+        'disclaimer_title': "⚠️ Αποποίηση Ευθύνης (Disclaimer)",
+        'disclaimer_text': """
+            Η παρούσα εφαρμογή αναπτύχθηκε από την BESS ENERGY αποκλειστικά για ενημερωτικούς και εκπαιδευτικούς σκοπούς. 
+            Οι υπολογισμοί και τα αποτελέσματα που παρουσιάζονται αποτελούν εκτιμήσεις που βασίζονται στα δεδομένα που εισάγει ο χρήστης.
+            <br>
+            Η BESS ENERGY δεν εγγυάται την ακρίβεια των αποτελεσμάτων και δεν φέρει ουδεμία ευθύνη για τυχόν λάθη ή επενδυτικές αποφάσεις. 
+            Συνιστάται αυστηρά στους χρήστες να συμβουλεύονται τους εξειδικευμένους συμβούλους τους.
+        """,
+
         # Leads Form
         'leads_title': "📬 Μείνετε Ενημερωμένοι (Προαιρετικό)",
         'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις σχετικά με τις μπαταρίες **Gotion** και νέες επενδυτικές ευκαιρίες.",
@@ -90,7 +104,7 @@ TRANS = {
         'lbl_email': "Email",
         'lbl_consent': "Επιθυμώ να λαμβάνω ενημερωτικά email από την BESS ENERGY.",
 
-        # Export & Footer
+        # Export Buttons
         'btn_download': "📥 Λήψη σε Excel",
         'print_tip': "💡 Για εκτύπωση / αποθήκευση PDF πατήστε **Ctrl + P**.",
         'sheet_res': "Αποτελέσματα",
@@ -99,15 +113,7 @@ TRANS = {
         'val_col': "Τιμή",
         
         'feedback_text': "📧 Αν έχετε κάποια παρατήρηση για την εφαρμογή ή αν θέλετε κάποια βελτίωση, παρακαλούμε στείλτε μας μήνυμα στο: **bess@bessenergy.gr**",
-        'disclaimer_title': "⚠️ Αποποίηση Ευθύνης (Disclaimer):",
-        'disclaimer_text': """
-            Η παρούσα εφαρμογή αναπτύχθηκε από την BESS ENERGY αποκλειστικά για ενημερωτικούς και εκπαιδευτικούς σκοπούς. 
-            Οι υπολογισμοί και τα αποτελέσματα που παρουσιάζονται αποτελούν εκτιμήσεις που βασίζονται στα δεδομένα που εισάγει ο χρήστης.
-            <br><br>
-            Η BESS ENERGY δεν εγγυάται την ακρίβεια των αποτελεσμάτων και δεν φέρει ουδεμία ευθύνη για τυχόν λάθη ή επενδυτικές αποφάσεις. 
-            Συνιστάται αυστηρά στους χρήστες να συμβουλεύονται τους εξειδικευμένους συμβούλους τους.
-        """,
-
+        
         # MANUAL
         'manual_title': "📘 Αναλυτικός Οδηγός Χρήσης & Επεξηγήσεις (Πατήστε εδώ)",
         'manual_text': """
@@ -143,7 +149,7 @@ TRANS = {
 
         ---
 
-        ### ❓ 3. Συχνές Ερωτήσεις (FAQ)
+        ### ❓ 3. Συχνές Ερωτήσεις (FAQ) - Σημαντικό!
 
         **Ερώτηση: Γιατί στον πίνακα αποτελεσμάτων, στο Έτος 1, το "Σωρευτικό Ταμείο" είναι μικρότερο από το "Τελικό Ταμείο";**
         
@@ -231,6 +237,18 @@ TRANS = {
         'tbl_net': "Net Cash Flow",
         'tbl_cum': "Cumulative",
 
+        'save_title': "🖨️ Save & Print",
+        'save_desc': "If you want to keep these results, use the options below.",
+
+        'disclaimer_title': "⚠️ Disclaimer",
+        'disclaimer_text': """
+            This application was developed by BESS ENERGY solely for informational and educational purposes. 
+            The calculations and results presented are estimates based on user inputs and theoretical models.
+            <br>
+            BESS ENERGY does not guarantee the accuracy of the results and assumes no liability for any errors or investment decisions made based on this tool. 
+            Users are strictly advised to consult with qualified financial and legal advisors before making any investment commitments.
+        """,
+
         'leads_title': "📬 Stay Informed (Optional)",
         'leads_desc': "Fill in your details to receive updates about **Gotion** batteries and investment opportunities.",
         'lbl_name': "Full Name",
@@ -245,15 +263,7 @@ TRANS = {
         'val_col': "Value",
         
         'feedback_text': "📧 If you have any feedback regarding the application or suggestions for improvement, please send us a message at: **bess@bessenergy.gr**",
-        'disclaimer_title': "⚠️ Disclaimer:",
-        'disclaimer_text': """
-            This application was developed by BESS ENERGY solely for informational and educational purposes. 
-            The calculations and results presented are estimates based on user inputs and theoretical models.
-            <br><br>
-            BESS ENERGY does not guarantee the accuracy of the results and assumes no liability for any errors or investment decisions made based on this tool. 
-            Users are strictly advised to consult with qualified financial and legal advisors before making any investment commitments.
-        """,
-
+        
         'manual_title': "📘 Comprehensive User Guide (Click to expand)",
         'manual_text': """
         ### 👋 Welcome to BESS ROI Calculator
@@ -322,7 +332,26 @@ st.markdown("""
         .stButton { display: none; }
         .stDownloadButton { display: none; }
         .disclaimer-box { display: block !important; border: 1px solid #ccc; }
-        .feedback-box { display: block !important; }
+        .leads-box { display: none; }
+    }
+    
+    /* Custom Styling for Boxes */
+    .disclaimer-box {
+        background-color: #f0f2f6; 
+        padding: 15px; 
+        border-radius: 8px; 
+        font-size: 13px; 
+        color: #444;
+        border-left: 5px solid #6c757d;
+        margin-bottom: 20px;
+    }
+    
+    .leads-box {
+        background-color: #e8f4f8; 
+        padding: 20px; 
+        border-radius: 10px; 
+        border: 1px solid #d1e7dd;
+        margin-bottom: 20px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -363,7 +392,7 @@ def save_lead(name, email, consent):
                 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 writer.writerow([now, name, email, "Yes" if consent else "No"])
         except Exception as e:
-            pass # Silent fail to not disrupt user
+            pass 
 
 # -------------------------------------------------------
 
@@ -681,20 +710,39 @@ styler = df_results.style.format({
 
 st.dataframe(styler, use_container_width=True)
 
-# --- LEAD GENERATION & EXPORT ---
+
+# --- REORGANIZED FOOTER SECTION (v14.0) ---
+
 st.divider()
 
-# 1. Lead Generation Form
-col_lead1, col_lead2 = st.columns(2)
-with col_lead1:
-    st.subheader(T['leads_title'])
-    st.markdown(T['leads_desc'])
-    
-    lead_name = st.text_input(T['lbl_name'], key="lead_name")
-    lead_email = st.text_input(T['lbl_email'], key="lead_email")
+# 1. HEADER for Actions
+st.subheader(T['save_title'])
+st.markdown(T['save_desc'])
+
+# 2. DISCLAIMER BOX (Grey, Legal)
+st.markdown(f"""
+<div class="disclaimer-box">
+    <strong>{T['disclaimer_title']}</strong><br>
+    {T['disclaimer_text']}
+</div>
+""", unsafe_allow_html=True)
+
+# 3. LEADS BOX (Distinct Color, Optional)
+# Using st.container with styling via CSS class 'leads-box' injected above
+st.markdown(f'<div class="leads-box"><h3>{T["leads_title"]}</h3><p>{T["leads_desc"]}</p></div>', unsafe_allow_html=True)
+
+# We place the input widgets *outside* the raw HTML div but logically "inside" the section
+# To make them look contained, we can use a container, but visually the separation is clear via headings.
+with st.container():
+    col_l1, col_l2 = st.columns(2)
+    with col_l1:
+        lead_name = st.text_input(T['lbl_name'], key="lead_name")
+    with col_l2:
+        lead_email = st.text_input(T['lbl_email'], key="lead_email")
     lead_consent = st.checkbox(T['lbl_consent'], key="lead_consent")
 
-# 2. Export Button with Callback
+# 4. DOWNLOAD BUTTONS (Distinct Area at Bottom)
+st.markdown("---") # Small separator
 buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     df_export = df_results.copy()
@@ -735,10 +783,8 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 
 download_data = buffer.getvalue()
 
-# Layout for Download
 col_btn1, col_btn2 = st.columns([1, 4])
 with col_btn1:
-    # IMPORTANT: Pass inputs to args, function will save only if populated
     st.download_button(
         label=T['btn_download'],
         data=download_data,
@@ -751,28 +797,18 @@ with col_btn1:
 with col_btn2:
     st.info(T['print_tip'])
 
-# --- FEEDBACK & DISCLAIMER ---
-st.divider()
 
+# --- FEEDBACK & ADMIN ---
 st.markdown(f"""
-<div class="feedback-box" style='text-align: center; color: #555; font-weight: 500; margin-bottom: 20px;'>
+<div class="feedback-box" style='text-align: center; color: #555; font-weight: 500; margin-top: 30px; margin-bottom: 20px;'>
     {T['feedback_text']}
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown(f"""
-<div class="disclaimer-box" style='background-color: #f0f2f6; padding: 15px; border-radius: 8px; font-size: 13px; color: #444;'>
-    <strong>{T['disclaimer_title']}</strong>
-    {T['disclaimer_text']}
-</div>
-""", unsafe_allow_html=True)
 
-
-# --- SECRET ADMIN PANEL (Για να κατεβάζεις τα emails) ---
-# Θα φαίνεται μόνο αν πατήσεις στο "Expander" κάτω-κάτω
 with st.expander("Admin Login (Restricted)"):
     admin_pass = st.text_input("Password", type="password")
-    if admin_pass == "bessadmin2024": # ΑΛΛΑΞΕ ΤΟΝ ΚΩΔΙΚΟ ΑΝ ΘΕΣ
+    if admin_pass == "bessadmin2024":
         if os.path.exists(LEADS_FILE):
             with open(LEADS_FILE, "rb") as f:
                 st.download_button(
