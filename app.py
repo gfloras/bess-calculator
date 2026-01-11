@@ -8,7 +8,8 @@ import csv
 from datetime import datetime
 
 # --- URLs ΠΡΟΪΟΝΤΩΝ & ΕΙΚΟΝΩΝ ---
-URL_IMG_BIG = "https://bessenergy.gr/wp-content/uploads/2025/09/gotion-5015-1.jpg"
+# ΕΝΗΜΕΡΩΜΕΝΟ URL ΕΔΩ:
+URL_IMG_BIG = "https://bessenergy.gr/wp-content/uploads/2026/01/gotion-5015-1-new.jpg"
 URL_PAGE_BIG = "https://bessenergy.gr/bess/"
 
 URL_IMG_SMALL = "https://bessenergy.gr/wp-content/uploads/2025/09/ESC-R1125-261-CE.png"
@@ -845,6 +846,3 @@ with st.expander("Admin Login (Restricted)"):
             st.success(f"Found leads file! Size: {os.path.getsize(LEADS_FILE)} bytes")
         else:
             st.warning("No leads collected yet.")
-
-
-
