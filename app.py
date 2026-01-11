@@ -90,17 +90,16 @@ TRANS = {
         'tbl_net': "Τελικό Ταμείο",
         'tbl_cum': "Σωρευτικό",
 
-        # PROMO SECTION (NEW)
+        # Print Instruction (New)
+        'print_instruction': "🖨️ **Αποθήκευση & Εκτύπωση:** Αν θέλετε να τυπώσετε τα αποτελέσματα, χρησιμοποιήστε τις επιλογές στο κάτω μέρος της σελίδας.",
+
+        # PROMO SECTION
         'promo_title': "⚡ Οι Λύσεις Αποθήκευσης της BESS ENERGY",
         'promo_desc': "Επιλέξτε την ιδανική λύση μπαταρίας **Gotion** για την επένδυσή σας.",
         'prod1_title': "Gotion Utility Scale (5.015 MWh)",
         'prod1_btn': "Δείτε το Προϊόν",
         'prod2_title': "Gotion C&I (261 kWh)",
         'prod2_btn': "Δείτε το Προϊόν",
-
-        # Save Section
-        'save_title': "🖨️ Αποθήκευση & Εκτύπωση",
-        'save_desc': "Αν θέλετε να κρατήσετε τα αποτελέσματα, χρησιμοποιήστε τις παρακάτω επιλογές.",
         
         # Disclaimer
         'disclaimer_title': "⚠️ Αποποίηση Ευθύνης (Disclaimer)",
@@ -114,10 +113,13 @@ TRANS = {
 
         # Leads Form
         'leads_title': "📬 Μείνετε Ενημερωμένοι (Προαιρετικό)",
-        'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις και νέες επενδυτικές ευκαιρίες.",
+        'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις σχετικά με τις μπαταρίες **Gotion** και νέες επενδυτικές ευκαιρίες.",
         'lbl_name': "Ονοματεπώνυμο",
         'lbl_email': "Email",
         'lbl_consent': "Επιθυμώ να λαμβάνω ενημερωτικά email από την BESS ENERGY.",
+        'btn_subscribe': "Εγγραφή στην Ενημέρωση",
+        'msg_success': "✅ Ευχαριστούμε! Τα στοιχεία σας καταχωρήθηκαν επιτυχώς.",
+        'msg_fail': "⚠️ Παρακαλούμε επιλέξτε το κουτάκι συγκατάθεσης για να προχωρήσετε.",
 
         # Export Buttons
         'btn_download': "📥 Λήψη σε Excel",
@@ -230,15 +232,14 @@ TRANS = {
         'tbl_net': "Net Cash Flow",
         'tbl_cum': "Cumulative",
 
+        'print_instruction': "🖨️ **Storage & Printing:** If you want to print the results, please use the options at the bottom of the page.",
+
         'promo_title': "⚡ BESS ENERGY Storage Solutions",
         'promo_desc': "Choose the ideal **Gotion** battery solution for your investment.",
         'prod1_title': "Gotion Utility Scale (5.015 MWh)",
         'prod1_btn': "View Product",
         'prod2_title': "Gotion C&I (261 kWh)",
         'prod2_btn': "View Product",
-
-        'save_title': "🖨️ Save & Print",
-        'save_desc': "If you want to keep these results, use the options below.",
 
         'disclaimer_title': "⚠️ Disclaimer",
         'disclaimer_text': """
@@ -254,6 +255,9 @@ TRANS = {
         'lbl_name': "Full Name",
         'lbl_email': "Email",
         'lbl_consent': "I agree to receive newsletters from BESS ENERGY.",
+        'btn_subscribe': "Subscribe to Updates",
+        'msg_success': "✅ Thank you! Your details have been registered.",
+        'msg_fail': "⚠️ Please check the consent box to proceed.",
 
         'btn_download': "📥 Download to Excel",
         'print_tip': "💡 To print or save as PDF press **Ctrl + P**.",
@@ -340,6 +344,16 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         text-align: center;
         margin-bottom: 10px;
+    }
+    
+    .info-box {
+        background-color: #fff3cd;
+        color: #856404;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #ffeeba;
+        margin-bottom: 20px;
+        font-weight: 500;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -698,8 +712,15 @@ styler = df_results.style.format({
 
 st.dataframe(styler, use_container_width=True)
 
+# --- PRINT INSTRUCTION (NEW POSITION) ---
+st.markdown(f"""
+<div class="info-box">
+    {T['print_instruction']}
+</div>
+""", unsafe_allow_html=True)
 
-# --- PROMO SECTION (NEW v15.0) ---
+
+# --- PROMO SECTION ---
 st.divider()
 st.subheader(T['promo_title'])
 st.markdown(T['promo_desc'])
@@ -707,7 +728,7 @@ st.markdown(T['promo_desc'])
 col_p1, col_p2 = st.columns(2)
 
 with col_p1:
-    with st.container(border=True): # New nice container style
+    with st.container(border=True):
         st.image(URL_IMG_BIG, use_container_width=True)
         st.subheader(T['prod1_title'])
         st.link_button(T['prod1_btn'], URL_PAGE_BIG, use_container_width=True)
@@ -719,14 +740,8 @@ with col_p2:
         st.link_button(T['prod2_btn'], URL_PAGE_SMALL, use_container_width=True)
 
 
-# --- FOOTER & EXPORT ---
+# --- DISCLAIMER BOX ---
 st.divider()
-
-# 1. HEADER for Actions
-st.subheader(T['save_title'])
-st.markdown(T['save_desc'])
-
-# 2. DISCLAIMER BOX (Grey, Legal)
 st.markdown(f"""
 <div class="disclaimer-box">
     <strong>{T['disclaimer_title']}</strong><br>
@@ -734,7 +749,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# 3. LEADS BOX (Distinct Color, Optional)
+# --- LEADS BOX (INDEPENDENT) ---
 st.markdown(f'<div class="leads-box"><h3>{T["leads_title"]}</h3><p>{T["leads_desc"]}</p></div>', unsafe_allow_html=True)
 
 with st.container():
@@ -744,8 +759,16 @@ with st.container():
     with col_l2:
         lead_email = st.text_input(T['lbl_email'], key="lead_email")
     lead_consent = st.checkbox(T['lbl_consent'], key="lead_consent")
+    
+    # NEW SUBSCRIBE BUTTON Logic
+    if st.button(T['btn_subscribe'], type="primary"):
+        if lead_consent:
+            save_lead(lead_name, lead_email, lead_consent)
+            st.success(T['msg_success'])
+        else:
+            st.warning(T['msg_fail'])
 
-# 4. DOWNLOAD BUTTONS (Distinct Area at Bottom)
+# --- DOWNLOAD BUTTONS ---
 st.markdown("---") 
 buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
@@ -793,9 +816,7 @@ with col_btn1:
         label=T['btn_download'],
         data=download_data,
         file_name="BESS_ROI_Report.xlsx",
-        mime="application/vnd.ms-excel",
-        on_click=save_lead,
-        args=(lead_name, lead_email, lead_consent)
+        mime="application/vnd.ms-excel"
     )
 
 with col_btn2:
