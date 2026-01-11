@@ -7,6 +7,13 @@ import os
 import csv
 from datetime import datetime
 
+# --- URLs ΠΡΟΪΟΝΤΩΝ & ΕΙΚΟΝΩΝ ---
+URL_IMG_BIG = "https://bessenergy.gr/wp-content/uploads/2025/09/gotion-5015-1.jpg"
+URL_PAGE_BIG = "https://bessenergy.gr/bess/"
+
+URL_IMG_SMALL = "https://bessenergy.gr/wp-content/uploads/2025/09/ESC-R1125-261-CE.png"
+URL_PAGE_SMALL = "https://bessenergy.gr/industrial-and-commercial/"
+
 # --- ΛΕΞΙΚΟ ΜΕΤΑΦΡΑΣΕΩΝ (TRANSLATION DICTIONARY) ---
 TRANS = {
     'el': {
@@ -83,7 +90,15 @@ TRANS = {
         'tbl_net': "Τελικό Ταμείο",
         'tbl_cum': "Σωρευτικό",
 
-        # SAVE & PRINT SECTION
+        # PROMO SECTION (NEW)
+        'promo_title': "⚡ Οι Λύσεις Αποθήκευσης της BESS ENERGY",
+        'promo_desc': "Επιλέξτε την ιδανική λύση μπαταρίας **Gotion** για την επένδυσή σας.",
+        'prod1_title': "Gotion Utility Scale (5.015 MWh)",
+        'prod1_btn': "Δείτε το Προϊόν",
+        'prod2_title': "Gotion C&I (261 kWh)",
+        'prod2_btn': "Δείτε το Προϊόν",
+
+        # Save Section
         'save_title': "🖨️ Αποθήκευση & Εκτύπωση",
         'save_desc': "Αν θέλετε να κρατήσετε τα αποτελέσματα, χρησιμοποιήστε τις παρακάτω επιλογές.",
         
@@ -99,7 +114,7 @@ TRANS = {
 
         # Leads Form
         'leads_title': "📬 Μείνετε Ενημερωμένοι (Προαιρετικό)",
-        'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις σχετικά με τις μπαταρίες **Gotion** και νέες επενδυτικές ευκαιρίες.",
+        'leads_desc': "Συμπληρώστε τα στοιχεία σας για να λαμβάνετε ενημερώσεις και νέες επενδυτικές ευκαιρίες.",
         'lbl_name': "Ονοματεπώνυμο",
         'lbl_email': "Email",
         'lbl_consent': "Επιθυμώ να λαμβάνω ενημερωτικά email από την BESS ENERGY.",
@@ -146,28 +161,6 @@ TRANS = {
         * **NPV (Καθαρή Παρούσα Αξία):** Δείχνει το συνολικό κέρδος σε σημερινή αξία χρημάτων. Αν είναι θετικό (>0), η επένδυση είναι κερδοφόρα.
         * **IRR (Εσωτερικός Βαθμός Απόδοσης):** Το πραγματικό ετήσιο επιτόκιο που κερδίζουν τα χρήματά σας. Αν το IRR είναι μεγαλύτερο από το επιτόκιο της τράπεζας, τότε συμφέρει η επένδυση.
         * **Απόσβεση (Payback Period):** Ο χρόνος που απαιτείται για να πάρετε πίσω τα χρήματα που βάλατε από την τσέπη σας (Ίδια Κεφάλαια).
-
-        ---
-
-        ### ❓ 3. Συχνές Ερωτήσεις (FAQ) - Σημαντικό!
-
-        **Ερώτηση: Γιατί στον πίνακα αποτελεσμάτων, στο Έτος 1, το "Σωρευτικό Ταμείο" είναι μικρότερο από το "Τελικό Ταμείο";**
-        
-        **Απάντηση:**
-        Αυτό συμβαίνει γιατί το Σωρευτικό Ταμείο υπολογίζει και την αρχική σας εκταμίευση (τα χρήματα που βάλατε προκαταβολή).
-        
-        * **Παράδειγμα:**
-            * Συνολικό Κόστος Έργου: 100.000€
-            * Δάνειο (80%): 80.000€
-            * **Ίδια Κεφάλαια (Εσείς): 20.000€** (Αυτό είναι το "άνοιγμά" σας στο Έτος 0).
-            * Έστω ότι το 1ο έτος το έργο αφήνει καθαρό κέρδος **30.000€** (Τελικό Ταμείο).
-        
-        * **Ο Υπολογισμός του Σωρευτικού:**
-            * Ξεκινάμε με -20.000€ (τα χρήματα που δώσατε).
-            * Προσθέτουμε τα +30.000€ του 1ου έτους.
-            * **Αποτέλεσμα:** +10.000€. 
-        
-        Γι' αυτό βλέπετε διαφορά. Το "Τελικό Ταμείο" δείχνει τι μπήκε στο ταμείο **μέσα στη χρονιά**, ενώ το "Σωρευτικό" δείχνει αν έχετε καλύψει την αρχική σας επένδυση συνολικά.
         """
     },
     'en': {
@@ -237,6 +230,13 @@ TRANS = {
         'tbl_net': "Net Cash Flow",
         'tbl_cum': "Cumulative",
 
+        'promo_title': "⚡ BESS ENERGY Storage Solutions",
+        'promo_desc': "Choose the ideal **Gotion** battery solution for your investment.",
+        'prod1_title': "Gotion Utility Scale (5.015 MWh)",
+        'prod1_btn': "View Product",
+        'prod2_title': "Gotion C&I (261 kWh)",
+        'prod2_btn': "View Product",
+
         'save_title': "🖨️ Save & Print",
         'save_desc': "If you want to keep these results, use the options below.",
 
@@ -294,28 +294,6 @@ TRANS = {
         * **NPV (Net Present Value):** Total profit in today's money value. Positive (>0) means the project is profitable.
         * **IRR (Internal Rate of Return):** The annual return rate on your specific Equity. Compare this with alternative investments.
         * **Payback Period:** Years required to recover your initial Equity.
-
-        ---
-
-        ### ❓ 3. FAQ
-
-        **Question: Why is "Cumulative Cash Flow" lower than "Net Cash Flow" in Year 1?**
-        
-        **Answer:**
-        Cumulative Cash Flow accounts for your **Initial Equity** (the down payment you made).
-        
-        * **Example:**
-            * Total Cost: €100k
-            * Loan: €80k
-            * **Your Equity: €20k** (This is your starting negative balance).
-            * Year 1 Net Profit: **€30k**.
-        
-        * **Calculation:**
-            * Start: -€20k
-            * Add Year 1: +€30k
-            * **Result (Cumulative):** +€10k. 
-        
-        This is why there is a difference. "Net" is what you made that year; "Cumulative" is your total position including the initial cost.
         """
     }
 }
@@ -352,6 +330,16 @@ st.markdown("""
         border-radius: 10px; 
         border: 1px solid #d1e7dd;
         margin-bottom: 20px;
+    }
+
+    .promo-box {
+        background-color: #ffffff;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #eeeeee;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        text-align: center;
+        margin-bottom: 10px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -711,8 +699,27 @@ styler = df_results.style.format({
 st.dataframe(styler, use_container_width=True)
 
 
-# --- REORGANIZED FOOTER SECTION (v14.0) ---
+# --- PROMO SECTION (NEW v15.0) ---
+st.divider()
+st.subheader(T['promo_title'])
+st.markdown(T['promo_desc'])
 
+col_p1, col_p2 = st.columns(2)
+
+with col_p1:
+    with st.container(border=True): # New nice container style
+        st.image(URL_IMG_BIG, use_container_width=True)
+        st.subheader(T['prod1_title'])
+        st.link_button(T['prod1_btn'], URL_PAGE_BIG, use_container_width=True)
+
+with col_p2:
+    with st.container(border=True):
+        st.image(URL_IMG_SMALL, use_container_width=True)
+        st.subheader(T['prod2_title'])
+        st.link_button(T['prod2_btn'], URL_PAGE_SMALL, use_container_width=True)
+
+
+# --- FOOTER & EXPORT ---
 st.divider()
 
 # 1. HEADER for Actions
@@ -728,11 +735,8 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # 3. LEADS BOX (Distinct Color, Optional)
-# Using st.container with styling via CSS class 'leads-box' injected above
 st.markdown(f'<div class="leads-box"><h3>{T["leads_title"]}</h3><p>{T["leads_desc"]}</p></div>', unsafe_allow_html=True)
 
-# We place the input widgets *outside* the raw HTML div but logically "inside" the section
-# To make them look contained, we can use a container, but visually the separation is clear via headings.
 with st.container():
     col_l1, col_l2 = st.columns(2)
     with col_l1:
@@ -742,7 +746,7 @@ with st.container():
     lead_consent = st.checkbox(T['lbl_consent'], key="lead_consent")
 
 # 4. DOWNLOAD BUTTONS (Distinct Area at Bottom)
-st.markdown("---") # Small separator
+st.markdown("---") 
 buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     df_export = df_results.copy()
