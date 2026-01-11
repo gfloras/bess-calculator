@@ -250,7 +250,7 @@ TRANS = {
         """,
 
         'leads_title': "📬 Stay Informed (Optional)",
-        'leads_desc': "Fill in your details to receive updates about **Gotion** batteries and investment opportunities.",
+        'leads_desc': "Fill in your details to receive updates about Gotion batteries and investment opportunities.",
         'lbl_name': "Full Name",
         'lbl_email': "Email",
         'lbl_consent': "I agree to receive newsletters from BESS ENERGY.",
@@ -845,4 +845,5 @@ with st.expander("Admin Login (Restricted)"):
             st.success(f"Found leads file! Size: {os.path.getsize(LEADS_FILE)} bytes")
         else:
             st.warning("No leads collected yet.")
+
 
